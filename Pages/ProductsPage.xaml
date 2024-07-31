@@ -1,0 +1,35 @@
+﻿<Page x:Class="WPFModernVerticalMenu.Pages.ProductsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Title="ProductsPage">
+    <Grid>
+        <DataGrid x:Name="DataGridProduits" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="200" Width="760" SelectionChanged="DataGridProduits_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="100"/>
+                <DataGridTextColumn Header="Category" Binding="{Binding CategoryName}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,220,0,0">
+            <TextBox x:Name="ProductNameTextBox" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBlock Text="Nom du produit" Foreground="Gray" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False" Visibility="{Binding Text.Length, ElementName=ProductNameTextBox}"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220,220,0,0">
+            <TextBox x:Name="ProductPriceTextBox" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBlock Text="Prix du produit" Foreground="Gray" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False" Visibility="{Binding Text.Length, ElementName=ProductPriceTextBox }"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="430,220,0,0">
+            <ComboBox x:Name="ProductCategoryComboBox" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" DisplayMemberPath="Name" SelectedValuePath="Id"/>
+            <TextBlock Text="Catégorie" Foreground="Gray" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False" Visibility="{Binding SelectedIndex, ElementName=ProductCategoryComboBox}"/>
+        </Grid>
+
+        <Button Name="AddProductButton" Content="Ajouter Produit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="30" Margin="10,260,0,0" Click="AddProductButton_Click"/>
+        <Button Name="EditProductButton" Content="Modifier Produit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="30" Margin="140,260,0,0" Click="EditProductButton_Click"/>
+        <Button Name="DeleteProductButton" Content="Supprimer Produit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="30" Margin="270,260,0,0" Click="DeleteProductButton_Click"/>
+    </Grid>
+</Page>
